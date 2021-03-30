@@ -2,7 +2,7 @@
 Hackerrank Problem solving quiz questions
 
 
-## 1- String Anagram --> treick to use a map and sort the dictionary words
+## 1- String Anagram --> trick is to use a map and sort the dictionary words
 
 ```
 vector<int> stringAnagram(vector<string> dictionary, vector<string> query) {
@@ -44,3 +44,32 @@ vector<int> stringAnagram(vector<string> dictionary, vector<string> query) {
 
 
 ```
+
+## 2- min time to store files in parallel --> trick sort then loop from descending order and check
+
+```
+long minTime(vector<int> files, int numCores, int limit) {
+	long result = 0l;
+	int currLimit = limit;
+	std::sort(files.begin(), files.end());
+
+
+	for (auto i = files.rbegin(); i != files.rend(); i++) {
+		if (numCores >= 1) {
+			if (*i % numCores == 0 && currLimit >= 1) {
+				*i /= numCores;
+				currLimit--;
+			}
+		}
+		result += (long)*i;
+	}
+
+	return result;
+}
+
+
+```
+
+
+
+
